@@ -1,43 +1,18 @@
-# myWeb—(vue3)
+# Vue 3 + TypeScript + Vite
 
-##### Main Technology [Stack](https://shields.io/):
+This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-[![Vue](https://img.shields.io/badge/vue-%5E3.2.23-green)](https://cn.vuejs.org/) [![element--plus](https://img.shields.io/badge/element--plus-%5E1.2.0--beta.5-green)](https://element-plus.gitee.io/) [![vite](https://img.shields.io/badge/vite-%5E2.7.0-green)](https://vitejs.cn/) [![typescript](https://img.shields.io/badge/typescript-%5E4.4.4-green)](https://typeorm.biunav.com/)  [![axios](https://img.shields.io/badge/axios-%5E0.24.0-green)](http://www.axios-js.com/)   [![less](https://img.shields.io/badge/less-4.1.2-green)](https://less.bootcss.com/)     [![qs](https://img.shields.io/badge/qs-%5E6.10.3-green)](https://www.npmjs.com/package/qs) 
+## Recommended IDE Setup
 
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
+## Type Support For `.vue` Imports in TS
 
----
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-1. home(首页):
-   - use `el-Menu` to navigate the page.
-   - use `font-family` custom text for my name.
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
-3. blogs(我的博客):
-
-   - Custom ***dynamic*** navigation bar(The data format to be collated).
-   - `ElLoading` (as a service ),Used to wait for data to be fully requested and the page to be fully rendered.
-   - <font color='red'>future:</font> `MarkDowm ` rendering
-
-4. product(作品展示)：
-
-   - Encapsulates some components:
-     - productBox:The card used to display data
-     - [progress](https://github.com/RSS1102/vue3-component/blob/main/progress.vue):The multi-task progress bar is displayed
-
-5. communication（交流）：
-
-   <font color='red'>future:</font> 
-
-   - Realize wechat scan code login
-   - Realize message and reply
-
-6. Demo（Demo）：
-
-   <font color='red'>future:</font> 
-
-   - Place some fancy page displays
-
----
-
-If you have any questions please feel free to send me an  <a class="email-a" href="mailto:jimmyrss1102@gmail.com" target="_blank">email</a>.
-
+1. Disable the built-in TypeScript Extension
+   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.

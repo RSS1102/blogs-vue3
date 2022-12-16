@@ -1,4 +1,4 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig, loadEnv, BuildOptions } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { join } from "path";
 
@@ -6,59 +6,39 @@ import { join } from "path";
 export default defineConfig(({ command, mode }) => {
   //加载环境变量，打包路由路径
   const env = loadEnv(mode, process.cwd(), '')
+
   return {
-    base: env.VITE_BASEURL,
     plugins: [vue()],
-    //添加快捷路径@
-    // https://vitejs.dev/config/#resolve-alias
+    base: env.VITE_BASEURL,
+    //添加快捷路径
     resolve: {
       alias: {
         '@': join(__dirname, "src"),
       }
     },
-
-    //  vite2打包出现警告，"@charset" must be the first, https://www.zhihu.com/question/498190531/answer/2219095376
-    css: {
-      postcss: {
-        plugins: [
-          {
-            postcssPlugin: 'internal:charset-removal',
-            AtRule: {
-              charset: (atRule) => {
-                if (atRule.name === 'charset') {
-                  atRule.remove();
-                }
-              }
-            }
-          }
-        ],
-      },
-    },
     //代理
     server: {
-      https: true,
+      host: '0.0.0.0',
+      https: false,
+      // https://github.com/http-party/node-http-proxy#options
       proxy: {
         '/api': {
-          // target: 'https://localhost:3003/api/',
           target: `https://localhost:${env.VITE_PORT}/api/`,
           changeOrigin: true,
-          secure: false,//不检测https的合法性
+          secure: false,//验证 SSL 证书
           rewrite: path => path.replace(/^\/api/, ''),
         },
       },
     },
-    // https://vitejs.dev/config/#build-terseroptions
+    // https://vitejs.dev/config/build-options.html#build-minify
     build: {
-      minify: 'terser', 
+      minify: "terser",
       terserOptions: {
         compress: {
-          //生产环境时移除console
-          drop_console: true,
-          drop_debugger: true,
-        },
-      },
-    }
+          drop_console: command == 'build',
+          drop_debugger: command == 'build'
+        }
+      }
+    } as BuildOptions,
   }
 })
-
-
