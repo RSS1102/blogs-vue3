@@ -1,15 +1,12 @@
 <template>
-  <div class="menu-border">
-    <div class="menu">
-      <div v-for="menuItem in menuProps.menuArr" :class="[menuItem.isDisabled ? 'is-disabled' : 'menu-item']"
-        @click="menuOnclick(menuItem)">
-        <div>{{ menuItem.title }}</div>
-      </div>
+  <div class="menu">
+    <div v-for="menuItem in menuProps.menuArr" :class="[menuItem.isDisabled ? 'is-disabled' : 'menu-item']"
+      @click="menuOnclick(menuItem)">
+      <div>{{ menuItem.title }}</div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useRouter } from 'vue-router'
 const router = useRouter()
 interface MenuItem {
@@ -30,33 +27,31 @@ const menuOnclick = (menuItem: MenuItem) => {
 
 </script>
 <style lang="scss" scoped>
-.menu-border {
-  display: flex;
-  justify-content: center;
-  margin: 14px 0;
-}
-
 .menu {
   display: flex;
-  padding: 6px 24px;
+  justify-content: center;
+  padding: 12px 24px;
   border-radius: 4px;
-  background: rgb(129, 124, 124);
+  background: #23b7e5;
 }
 
 .menu-item {
   padding: 4px;
   border-radius: 4px;
-  margin: 0 14px;
+  margin: 0 24px;
   background: rgb(149, 216, 247);
   cursor: pointer;
 
   &:hover {
-    background: rgb(95, 157, 255);
+    background: #dcf2f8;
+    ;
   }
 
   &:active {
-    background: rgb(95, 157, 255);
-    color: white;
+    background: #dcf2f8;
+    ;
+    color: #97bbc5;
+    ;
     user-select: none;
   }
 }
@@ -66,7 +61,8 @@ const menuOnclick = (menuItem: MenuItem) => {
   border-radius: 4px;
   margin: 0 14px;
   background: rgb(255, 255, 255);
-  color: rgb(93, 93, 93);
+  color: #e2e2e2;
+  ;
   cursor: no-drop;
 }
 </style>
