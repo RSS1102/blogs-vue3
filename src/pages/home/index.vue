@@ -1,20 +1,31 @@
 <template>
-    <div class="main">
-        <div class="left">
-            <img src="@/assets/avatar.png" />
-            <div class="describe">偶尔卷一卷~🔥</div>
-            <div class="self-introduction">
-                目前只是一个只会点前端技术的小书童.如果您想了解我,可以查看我的
-                <a href="https://github.com/RSS1102" target="_blank">github</a>,获得更多的信息。
+    <MRicePaper>
+        <div class="main">
+            <div class="left">
+                <img src="@/assets/imgs/home/avatar.png" />
+                <div class="describe">偶尔卷一卷~🔥</div>
+                <MDivider />
+                <div class="self-introduction">
+                    是一个只会点前端技术的小书童，如果您想了解我更多，可以查看我的
+                    <a href="https://github.com/RSS1102" target="_blank">github</a>，获得更多的信息。
+                </div>
             </div>
+            <MDivider vertical />
+            <div class="center">
+                <MBorder>
+                    <div class="m-border-text">愿明天会比昨天更好！</div>
+                </MBorder>
+
+            </div>
+            <MDivider vertical />
+            <div class="right">3</div>
         </div>
-        <div class="center">2</div>
-        <div class="right">3</div>
-    </div>
+    </MRicePaper>
     <Footer></Footer>
 </template>
 <script setup lang="ts">
 import Footer from '@/layout/footer.vue'
+import { MRicePaper, MDivider, MBorder } from 'shuimo-ui'
 
 </script>
 <style lang="scss" scoped>
@@ -25,22 +36,57 @@ import Footer from '@/layout/footer.vue'
 
 .left,
 .right {
-    width: 20vw;
+    width: 400px;
 }
 
 .center {
-    width: 80vw;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @keyframes border-move {
+        from {
+            margin-bottom: 120px;
+        }
+
+        to {
+            margin-bottom: 100px;
+        }
+    }
+
+    .m-border {
+        width: 420px;
+        margin-bottom: 120px;
+        text-align: center;
+        box-shadow: 12px 12px 2px 1px rgba(113, 30, 30, 0.2);
+        user-select: none;
+
+        &:hover {
+            box-shadow: 12px 12px 2px 1px rgba(255, 255, 255, 0.71);
+            animation: 0.5s forwards border-move;
+        }
+    }
+
+
+
+    .m-border-text {
+        font-family: 'Open Yr-Xk', serif;
+        font-size: 42px;
+        padding: 20px;
+    }
+
 }
 
+
 .left {
-    border-right: 1px solid #000;
     display: flex;
     align-items: center;
     flex-direction: column;
 
     img {
         width: 180px;
-        border-radius: 45px;
+        border-radius: 35%;
     }
 
     .describe {
@@ -50,11 +96,8 @@ import Footer from '@/layout/footer.vue'
     }
 
     .self-introduction {
-        margin-top: 18px;
+        margin: 18px 0 0 12px;
         text-indent: 18px;
     }
-}
-.right{
-    border-left: 1px solid #000;
 }
 </style>
