@@ -2,7 +2,7 @@
   <div class="menu">
     <div v-for="menuItem in menuProps.menuArr" :class="[menuItem.isDisabled ? 'is-disabled' : 'menu-item']"
       @click="menuOnclick(menuItem)">
-      <div>{{ menuItem.title }}</div>
+      <div>{{ menuItem.isDisabled ? "🚧" : "" }} {{ menuItem.title }}</div>
     </div>
   </div>
 </template>
@@ -60,8 +60,8 @@ const menuOnclick = (menuItem: MenuItem) => {
   padding: 4px;
   border-radius: 4px;
   margin: 0 14px;
-  background: rgb(255, 255, 255);
-  color: #e2e2e2;
+  background: #88acb7;
+  color: #ebebeb;
   ;
   cursor: no-drop;
 }
