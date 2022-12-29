@@ -2,12 +2,13 @@
     <MRicePaper>
         <div class="main">
             <div class="left">
-                <img src="@/assets/imgs/home/avatar.png" />
+                <img src="@/assets/imgs/home/avatar.jpg" @click="goGithub" />
                 <div class="describe">偶尔卷一卷~🔥</div>
                 <MDivider />
                 <div class="self-introduction">
-                    是一个只会点前端技术的小书童，如果您想了解我更多，可以查看我的
-                    <a href="https://github.com/RSS1102" target="_blank">github</a>，获得更多的信息。
+                    是一个只会点前端技术的小书童，
+                    如果您想了解我更多，
+                    可以点击头像查看我的github获得更多的信息。
                 </div>
             </div>
             <MDivider vertical />
@@ -18,7 +19,7 @@
 
             </div>
             <MDivider vertical />
-            <div class="right">3</div>
+            <div class="right">...</div>
         </div>
     </MRicePaper>
     <Footer></Footer>
@@ -26,6 +27,9 @@
 <script setup lang="ts">
 import Footer from '@/layout/footer.vue'
 import { MRicePaper, MDivider, MBorder } from 'shuimo-ui'
+const goGithub = () => {
+    window.open("https://github.com/RSS1102", "_blank");
+}
 
 </script>
 <style lang="scss" scoped>
@@ -45,13 +49,13 @@ import { MRicePaper, MDivider, MBorder } from 'shuimo-ui'
     justify-content: center;
     align-items: center;
 
-    @keyframes border-move {
-        from {
-            margin-bottom: 120px;
+    @keyframes avatar-move {
+        0% {
+            transform: rotate(0);
         }
 
-        to {
-            margin-bottom: 100px;
+        100% {
+            transform: rotate(3turn);
         }
     }
 
@@ -61,14 +65,7 @@ import { MRicePaper, MDivider, MBorder } from 'shuimo-ui'
         text-align: center;
         box-shadow: 12px 12px 2px 1px rgba(113, 30, 30, 0.2);
         user-select: none;
-
-        &:hover {
-            box-shadow: 12px 12px 2px 1px rgba(255, 255, 255, 0.71);
-            animation: 0.5s forwards border-move;
-        }
     }
-
-
 
     .m-border-text {
         font-family: 'Open Yr-Xk', serif;
@@ -78,7 +75,6 @@ import { MRicePaper, MDivider, MBorder } from 'shuimo-ui'
 
 }
 
-
 .left {
     display: flex;
     align-items: center;
@@ -86,7 +82,11 @@ import { MRicePaper, MDivider, MBorder } from 'shuimo-ui'
 
     img {
         width: 180px;
-        border-radius: 35%;
+        border-radius: 50%;
+
+        &:hover {
+            animation: 1s forwards avatar-move;
+        }
     }
 
     .describe {
