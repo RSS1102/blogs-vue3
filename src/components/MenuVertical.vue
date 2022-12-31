@@ -9,18 +9,18 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 const router = useRouter()
-interface MenuItem {
-  title: string;
-  key: string;
-  isDisabled: boolean;
+type MenuVertical = {
+  title: string,
+  key: string,
+  isDisabled: boolean,
 }
 
 const menuProps = defineProps({
   menuArr: {
-    type: Array<MenuItem>,
+    type: Array<MenuVertical>,
   }
 })
-const menuOnclick = (menuItem: MenuItem) => {
+const menuOnclick = (menuItem: MenuVertical) => {
   if (menuItem.isDisabled) return
   router.push(menuItem.key)
 }
