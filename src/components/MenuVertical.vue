@@ -5,6 +5,10 @@ checkMenuItem === menuItem.key ? 'is-check' : '']"
       @click="menuOnclick(menuItem)">
       <div>{{ menuItem.isDisabled ? "🚧" : "" }} {{ menuItem.title }}</div>
     </div>
+    <div class="toggle" @click="toggleDark()">
+     <img class="dark" src="@/assets/imgs/global/dark.svg" v-if="isDark"/>
+      <img class="light" src="@/assets/imgs/global/light.svg" v-if="!isDark"/>
+    </div>
   </div>
   <MDivider></MDivider>
 </template>
@@ -12,6 +16,7 @@ checkMenuItem === menuItem.key ? 'is-check' : '']"
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { MDivider } from 'shuimo-ui';
+import { useDark, useToggle } from '@vueuse/core'
 const router = useRouter();
 
 type MenuVertical = {
@@ -36,7 +41,8 @@ const menuOnclick = (menuItem: MenuVertical) => {
   router.push(menuItem.key)
   checkMenuItem.value = menuItem.key
 }
-
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 </script>
 <style lang="scss" scoped>
 .menu {
@@ -79,5 +85,17 @@ const menuOnclick = (menuItem: MenuVertical) => {
 
 .is-check {
   border-bottom: 3px solid goldenrod;
+}
+
+.toggle {
+  img {
+    margin-left: 50px;
+    border-radius: 28px;
+    width: 36px;
+  }
+
+  .dark {
+    background: rgb(198, 198, 198);
+  }
 }
 </style>
