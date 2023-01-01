@@ -1,14 +1,19 @@
 <template>
   <div class="menu">
-    <div v-for="menuItem in menuProps.menuArr" :class="[menuItem.isDisabled ? 'is-disabled' : 'menu-item']"
+    <div v-for="menuItem in menuProps.menuArr" :class="[menuItem.isDisabled ? 'is-disabled' : 'menu-item',
+checkMenuItem === menuItem.key ? 'is-check' : '']"
       @click="menuOnclick(menuItem)">
       <div>{{ menuItem.isDisabled ? "🚧" : "" }} {{ menuItem.title }}</div>
     </div>
   </div>
+  <MDivider></MDivider>
 </template>
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { MDivider } from 'shuimo-ui';
+const router = useRouter();
+
 type MenuVertical = {
   title: string,
   key: string,
@@ -20,26 +25,32 @@ const menuProps = defineProps({
     type: Array<MenuVertical>,
   }
 })
+
+const checkMenuItem = ref()
+router.afterEach((to, from) => {
+  checkMenuItem.value = to.fullPath.substring(1)
+})
+
 const menuOnclick = (menuItem: MenuVertical) => {
   if (menuItem.isDisabled) return
   router.push(menuItem.key)
+  checkMenuItem.value = menuItem.key
 }
 
 </script>
 <style lang="scss" scoped>
 .menu {
   display: flex;
-  justify-content: center;
-  padding: 12px 24px;
+  justify-content: right;
+  padding: 12px 50px;
   border-radius: 4px;
-  background: #23b7e5;
+  background: transparent;
 }
 
 .menu-item {
   padding: 4px;
   border-radius: 4px;
   margin: 0 24px;
-  background: rgb(149, 216, 247);
   cursor: pointer;
 
   &:hover {
@@ -60,9 +71,13 @@ const menuOnclick = (menuItem: MenuVertical) => {
   padding: 4px;
   border-radius: 4px;
   margin: 0 14px;
-  background: #88acb7;
-  color: #ebebeb;
+  background: #c5ccd2;
+  color: #efefef;
   ;
   cursor: no-drop;
+}
+
+.is-check {
+  border-bottom: 3px solid goldenrod;
 }
 </style>

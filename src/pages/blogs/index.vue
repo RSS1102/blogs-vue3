@@ -49,7 +49,7 @@ const setMenu = (index: number[]) => {
 <style lang='scss' scoped>
 .blogs {
     display: flex;
-    min-height: calc(100vh - 60px);
+    min-height: calc(100vh - 62px);
 }
 
 :deep(.m-menu-left-line) {

@@ -1,5 +1,4 @@
 <template>
-    <MRicePaper>
         <div class="main">
             <div class="left">
                 <img src="@/assets/imgs/home/avatar.jpg" @click="goGithub" />
@@ -21,12 +20,11 @@
             <MDivider vertical />
             <div class="right">...</div>
         </div>
-    </MRicePaper>
     <Footer></Footer>
 </template>
 <script setup lang="ts">
 import Footer from '@/layout/footer.vue'
-import { MRicePaper, MDivider, MBorder } from 'shuimo-ui'
+import { MDivider, MBorder } from 'shuimo-ui'
 const goGithub = () => {
     window.open("https://github.com/RSS1102", "_blank");
 }
@@ -34,7 +32,7 @@ const goGithub = () => {
 </script>
 <style lang="scss" scoped>
 .main {
-    height: calc(100vh - 131px);
+    height: calc(100vh - 138px);
     display: flex;
 }
 
