@@ -4,7 +4,7 @@ import Blog from "@/pages/blogs/index.vue"
 import Progress from '@/pages/progress/index.vue'
 
 export const Menu: RouteRecordRaw[] = [
-    { path: '/index', component: Index },
-    { path: '/blog', component: Blog },
-    { path: '/progress', component: Progress },
+    { path: '/index',name:'index', component: Index },
+    { path: '/blog',name:'blog', component: Blog },
+    { path: '/progress',name:'progress', component: Progress },
 ]
