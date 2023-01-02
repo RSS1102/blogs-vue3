@@ -1,13 +1,12 @@
 <template>
   <div class="menu">
     <div v-for="menuItem in menuProps.menuArr" :class="[menuItem.isDisabled ? 'is-disabled' : 'menu-item',
-checkMenuItem === menuItem.key ? 'is-check' : '']"
-      @click="menuOnclick(menuItem)">
+checkMenuItem === menuItem.key ? 'is-check' : '']" @click="menuOnclick(menuItem)">
       <div>{{ menuItem.isDisabled ? "🚧" : "" }} {{ menuItem.title }}</div>
     </div>
     <div class="toggle" @click="toggleDark()">
-     <img class="dark" src="@/assets/imgs/global/dark.svg" v-if="isDark"/>
-      <img class="light" src="@/assets/imgs/global/light.svg" v-if="!isDark"/>
+      <img class="dark" src="@/assets/imgs/global/dark.svg" v-if="isDark" />
+      <img class="light" src="@/assets/imgs/global/light.svg" v-if="!isDark" />
     </div>
   </div>
   <MDivider></MDivider>
@@ -33,13 +32,17 @@ const menuProps = defineProps({
 
 const checkMenuItem = ref()
 router.afterEach((to, from) => {
-  checkMenuItem.value = to.fullPath.substring(1)
+  if (to.fullPath.match(/\/(\S*)\?/)) {
+    // 截取"/"和"?"之间的字符串
+    checkMenuItem.value = to.fullPath.match(/\/(\S*)\?/)![1];
+  } else {
+    checkMenuItem.value = to.fullPath.substring(1)
+  }
 })
 
 const menuOnclick = (menuItem: MenuVertical) => {
   if (menuItem.isDisabled) return
   router.push(menuItem.key)
-  checkMenuItem.value = menuItem.key
 }
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
@@ -91,7 +94,7 @@ const toggleDark = useToggle(isDark)
   img {
     margin-left: 50px;
     border-radius: 28px;
-    width: 36px;
+    width: 28px;
   }
 
   .dark {

@@ -1,33 +1,37 @@
 <template>
-        <div class="main">
-            <div class="left">
-                <img src="@/assets/imgs/home/avatar.jpg" @click="goGithub" />
-                <div class="describe">偶尔卷一卷~🔥</div>
-                <MDivider />
-                <div class="self-introduction">
-                    是一个只会点前端技术的小书童，
-                    如果您想了解我更多，
-                    可以点击头像查看我的github获得更多的信息。
-                </div>
+    <div class="main">
+        <div class="left">
+            <img class="avatar" src="@/assets/imgs/home/avatar.jpg" />
+            <div class="describe">偶尔卷一卷~🔥</div>
+            <MDivider />
+            <div class="contact-information">
+                <a href="https://github.com/RSS1102" target="_blank">
+                    <img src="@/assets/imgs/home/github.png" />
+                </a>
+                <a href="mailto:`jimmyrss1102@gmail.com`" target="_blank">
+                    <img src="@/assets/imgs/home/gmail.png" />
+                </a>
             </div>
-            <MDivider vertical />
-            <div class="center">
-                <MBorder>
-                    <div class="m-border-text">愿明天会比昨天更好！</div>
-                </MBorder>
-
+            <div class="self-introduction">
+                是一个只会点前端技术的小书童，
+                如果您想了解我更多，
+                可以点击头像查看我的github获得更多的信息。
             </div>
-            <MDivider vertical />
-            <div class="right">...</div>
         </div>
+        <MDivider vertical />
+        <div class="center">
+            <MBorder>
+                <div class="m-border-text">愿明天会比昨天更好！</div>
+            </MBorder>
+        </div>
+        <MDivider vertical />
+        <div class="right">...</div>
+    </div>
     <Footer></Footer>
 </template>
 <script setup lang="ts">
 import Footer from '@/layout/footer.vue'
 import { MDivider, MBorder } from 'shuimo-ui'
-const goGithub = () => {
-    window.open("https://github.com/RSS1102", "_blank");
-}
 
 </script>
 <style lang="scss" scoped>
@@ -78,7 +82,7 @@ const goGithub = () => {
     align-items: center;
     flex-direction: column;
 
-    img {
+    .avatar {
         width: 180px;
         border-radius: 50%;
 
@@ -94,8 +98,13 @@ const goGithub = () => {
     }
 
     .self-introduction {
-        margin: 18px 0 0 12px;
+        margin-top: 12px;
         text-indent: 18px;
+    }
+
+    .contact-information img {
+        width: 36px;
+        margin: 10px;
     }
 }
 </style>
