@@ -1,6 +1,7 @@
-import { defineConfig, loadEnv, BuildOptions } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig, loadEnv, BuildOptions } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import { join } from "path";
+import { RollupPluginFontmin } from '@higuaifan/rollup-plugin-fontmin';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -8,7 +9,9 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
 
   return {
-    plugins: [vue()],
+    plugins: [
+      vue()
+    ],
     base: env.VITE_BASEURL,
     //添加快捷路径
     resolve: {
@@ -38,6 +41,12 @@ export default defineConfig(({ command, mode }) => {
           drop_console: command == 'build',
           drop_debugger: command == 'build'
         }
+      },
+      rollupOptions: {
+        plugins: [RollupPluginFontmin({
+          fontSrc: 'dist/assets/*.ttf',
+          fontDest: 'dist/assets'
+        })]
       }
     } as BuildOptions,
   }
