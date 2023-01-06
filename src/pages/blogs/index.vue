@@ -1,14 +1,18 @@
 <template>
-<div class="blogs">
-    <div><MMenu :menu="menuList" @click="setMenu"></MMenu></div>
-    <div><MDivider vertical></MDivider></div>
-    <div>{{ content }}</div>
-</div>
+    <div id="blogs">
+        <div>
+            <MMenu :menu="menuList" @click="setMenu"></MMenu>
+        </div>
+        <div>
+            <MDivider vertical></MDivider>
+        </div>
+        <div>{{ content }}</div>
+    </div>
 </template>
 
 <script setup lang='ts'>
 import { MMenu, MDivider } from 'shuimo-ui'
-import { ref } from 'vue';
+import { nextTick, ref } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 
@@ -45,11 +49,18 @@ const setMenu = (index: number[]) => {
         }
     })
 }
+
+// 自动计算页面高度
+nextTick(() => {
+    const header = document.querySelector('header')
+    const blogs = document.getElementById('blogs')
+    blogs!.style.height = `${window.innerHeight - header!.clientHeight - 1}px`
+})
+
 </script>
 <style lang='scss' scoped>
-.blogs {
+#blogs {
     display: flex;
-    min-height: calc(100vh - 62px);
 }
 
 :deep(.m-menu-left-line) {

@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div id="main">
         <div class="left">
             <img class="avatar" src="@/assets/imgs/home/avatar.jpg" />
             <div class="describe">偶尔卷一卷~🔥</div>
@@ -32,11 +32,20 @@
 <script setup lang="ts">
 import Footer from '@/layout/footer.vue'
 import { MDivider, MBorder } from 'shuimo-ui'
+import { nextTick } from 'vue';
 
+// 自动计算页面高度
+nextTick(() => {
+    const header = document.querySelector('header')
+    const footer = document.querySelector('footer')
+    const main = document.getElementById('main')
+
+    main!.style.height = `${window.innerHeight - header!.clientHeight -
+        footer!.clientHeight - 1}px`
+})
 </script>
 <style lang="scss" scoped>
-.main {
-    height: calc(100vh - 138px);
+#main {
     display: flex;
 }
 

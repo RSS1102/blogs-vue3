@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <div v-for="menuItem in menuProps.menuArr" :class="[menuItem.isDisabled ? 'is-disabled' : 'menu-item',
-checkMenuItem === menuItem.key ? 'is-check' : '']" @click="menuOnclick(menuItem)">
+    checkMenuItem === menuItem.key ? 'is-check' : '']" @click="menuOnclick(menuItem)">
       <div>{{ menuItem.isDisabled ? "🚧" : "" }} {{ menuItem.title }}</div>
     </div>
     <div class="toggle" @click="toggleDark()">
@@ -15,7 +15,7 @@ checkMenuItem === menuItem.key ? 'is-check' : '']" @click="menuOnclick(menuItem)
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { MDivider } from 'shuimo-ui';
-import { useDark, useToggle } from '@vueuse/core'
+import { useDark, useToggle } from '@vueuse/core';
 const router = useRouter();
 
 type MenuVertical = {
@@ -31,6 +31,7 @@ const menuProps = defineProps({
 })
 
 const checkMenuItem = ref()
+
 router.afterEach((to, from) => {
   if (to.fullPath.match(/\/(\S*)\?/)) {
     // 截取"/"和"?"之间的字符串
@@ -44,11 +45,23 @@ const menuOnclick = (menuItem: MenuVertical) => {
   if (menuItem.isDisabled) return
   router.push(menuItem.key)
 }
+
+/**
+ * @desc 暗黑模式切换
+ * @doc [useDark](https://vueuse.org/core/useDark/)
+ */
 const isDark = useDark()
+
+/**
+ * @desc 布尔切换
+ * @doc [useToggle](https://vueuse.org/shared/useToggle/)
+ */
 const toggleDark = useToggle(isDark)
 </script>
 <style lang="scss" scoped>
 .menu {
+  font-family: 'Open xxk', serif;
+  font-size: 18px;
   display: flex;
   justify-content: right;
   padding: 12px 50px;
