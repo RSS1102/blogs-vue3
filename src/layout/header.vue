@@ -7,6 +7,6 @@ import MenuVertical from '@/components/MenuVertical.vue';
 const menu = ref([
     { title: "首页", key: 'index', isDisabled: false },
     { title: "博客", key: 'blog', isDisabled: false },
-    { title: "工程", key: 'progress', isDisabled: true }
+    { title: "工程", key: 'engineer', isDisabled: false }
 ])
 </script>

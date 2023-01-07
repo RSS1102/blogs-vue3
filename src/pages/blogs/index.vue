@@ -54,7 +54,7 @@ const setMenu = (index: number[]) => {
 nextTick(() => {
     const header = document.querySelector('header')
     const blogs = document.getElementById('blogs')
-    blogs!.style.height = `${window.innerHeight - header!.clientHeight - 1}px`
+    blogs!.style.minHeight = `${window.innerHeight - header!.clientHeight - 1}px`
 })
 
 </script>

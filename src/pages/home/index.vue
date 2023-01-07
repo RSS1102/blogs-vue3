@@ -40,7 +40,7 @@ nextTick(() => {
     const footer = document.querySelector('footer')
     const main = document.getElementById('main')
 
-    main!.style.height = `${window.innerHeight - header!.clientHeight -
+    main!.style.minHeight = `${window.innerHeight - header!.clientHeight -
         footer!.clientHeight - 1}px`
 })
 </script>
