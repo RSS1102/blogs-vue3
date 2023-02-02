@@ -4,9 +4,8 @@
     checkMenuItem === menuItem.key ? 'is-check' : '']" @click="menuOnclick(menuItem)">
       <div>{{ menuItem.isDisabled ? "🚧" : "" }} {{ menuItem.title }}</div>
     </div>
-    <div class="toggle" @click="toggleDark()">
-      <img class="dark" src="@/assets/imgs/global/dark.svg" v-if="isDark" />
-      <img class="light" src="@/assets/imgs/global/light.svg" v-if="!isDark" />
+    <div>
+      <Switch />
     </div>
   </div>
   <MDivider></MDivider>
@@ -15,7 +14,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { MDivider } from 'shuimo-ui';
-import { useDark, useToggle } from '@vueuse/core';
+import { Switch } from 'vue-dark-switch'
 const router = useRouter();
 
 type MenuVertical = {
@@ -32,6 +31,7 @@ const menuProps = defineProps({
 
 const checkMenuItem = ref()
 
+// 菜单路由回显
 router.afterEach((to, from) => {
   if (to.fullPath.match(/\/(\S*)\?/)) {
     // 截取"/"和"?"之间的字符串
@@ -45,18 +45,6 @@ const menuOnclick = (menuItem: MenuVertical) => {
   if (menuItem.isDisabled) return
   router.push(menuItem.key)
 }
-
-/**
- * @desc 暗黑模式切换
- * @doc [useDark](https://vueuse.org/core/useDark/)
- */
-const isDark = useDark()
-
-/**
- * @desc 布尔切换
- * @doc [useToggle](https://vueuse.org/shared/useToggle/)
- */
-const toggleDark = useToggle(isDark)
 </script>
 <style lang="scss" scoped>
 .menu {
@@ -89,6 +77,7 @@ const toggleDark = useToggle(isDark)
   }
 }
 
+
 .is-disabled {
   padding: 4px;
   border-radius: 4px;
@@ -101,17 +90,5 @@ const toggleDark = useToggle(isDark)
 
 .is-check {
   border-bottom: 3px solid goldenrod;
-}
-
-.toggle {
-  img {
-    margin-left: 50px;
-    border-radius: 28px;
-    width: 28px;
-  }
-
-  .dark {
-    background: rgb(198, 198, 198);
-  }
 }
 </style>
