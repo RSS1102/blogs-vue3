@@ -1,51 +1,48 @@
 <template>
-    <div id="main">
-        <div class="left">
-            <img class="avatar" src="@/assets/imgs/home/avatar.jpg" />
-            <div class="describe">偶尔卷一卷~🔥</div>
-            <MDivider />
-            <div class="contact-information">
-                <a href="https://github.com/RSS1102" target="_blank">
-                    <img src="@/assets/imgs/home/github.png" />
-                </a>
-                <a href="mailto:`jimmyrss1102@gmail.com`" target="_blank">
-                    <img src="@/assets/imgs/home/gmail.png" />
-                </a>
+    <div class="home">
+        <div class="home-content">
+            <div class="left">
+                <img class="avatar" src="@/assets/imgs/home/avatar.jpg" />
+                <div class="describe">偶尔卷一卷~🔥</div>
+                <MDivider />
+                <div class="contact-information">
+                    <a href="https://github.com/RSS1102" target="_blank">
+                        <img src="@/assets/imgs/home/github.png" />
+                    </a>
+                    <a href="mailto:`jimmyrss1102@gmail.com`" target="_blank">
+                        <img src="@/assets/imgs/home/gmail.png" />
+                    </a>
+                </div>
+                <div class="self-introduction">
+                    是一个只会点前端技术的小书童，
+                    如果您想了解我更多，
+                    可以点击头像查看我的github获得更多的信息。
+                </div>
             </div>
-            <div class="self-introduction">
-                是一个只会点前端技术的小书童，
-                如果您想了解我更多，
-                可以点击头像查看我的github获得更多的信息。
+            <MDivider vertical />
+            <div class="center">
+                <MBorder>
+                    <div class="m-border-text">愿明天会比昨天更好！</div>
+                </MBorder>
             </div>
+            <MDivider vertical />
+            <div class="right">...</div>
         </div>
-        <MDivider vertical />
-        <div class="center">
-            <MBorder>
-                <div class="m-border-text">愿明天会比昨天更好！</div>
-            </MBorder>
-        </div>
-        <MDivider vertical />
-        <div class="right">...</div>
+        <Footer></Footer>
     </div>
-    <Footer></Footer>
 </template>
 <script setup lang="ts">
 import Footer from '@/layout/footer.vue'
 import { MDivider, MBorder } from 'shuimo-ui'
-import { nextTick } from 'vue';
 
-// 自动计算页面高度
-nextTick(() => {
-    const header = document.querySelector('header')
-    const footer = document.querySelector('footer')
-    const main = document.getElementById('main')
-
-    main!.style.minHeight = `${window.innerHeight - header!.clientHeight -
-        footer!.clientHeight - 1}px`
-})
 </script>
 <style lang="scss" scoped>
-#main {
+.home {
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.home-content {
     display: flex;
 }
 
