@@ -1,10 +1,11 @@
 <template>
   <div class="menu">
-    <div v-for="menuItem in menuProps.menuArr" :class="[menuItem.isDisabled ? 'is-disabled' : 'menu-item',
-    checkMenuItem === menuItem.key ? 'is-check' : '']" @click="menuOnclick(menuItem)">
-      <div>{{ menuItem.isDisabled ? "🚧" : "" }} {{ menuItem.title }}</div>
-    </div>
-    <div>
+    <div class="menu--item__left" @click="goHome">@Cai</div>
+    <div class="menu--item__right">
+      <div v-for="menuItem in menuProps.menuArr" :class="[menuItem.isDisabled ? 'is-disabled' : 'menu-item',
+      checkMenuItem === menuItem.key ? 'is-check' : '']" @click="menuOnclick(menuItem)">
+        <div>{{ menuItem.isDisabled ? "🚧" : "" }} {{ menuItem.title }}</div>
+      </div>
       <Switch />
     </div>
   </div>
@@ -41,20 +42,41 @@ router.afterEach((to, from) => {
   }
 })
 
+/**
+ * @param menuItem 菜单项
+ */
 const menuOnclick = (menuItem: MenuVertical) => {
   if (menuItem.isDisabled) return
   router.push(menuItem.key)
 }
+/**
+ * @description: 返回首页
+ */
+const goHome = () => router.push('/')
 </script>
 <style lang="scss" scoped>
 .menu {
   font-family: 'Open xxk', serif;
   font-size: 18px;
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
+}
+
+.menu--item__left {
+  margin: 6px 0 0 100px;
+  padding: 0 15px;
+  font-size: 35px;
+  color: black;
+  background: rgba(173, 231, 225, 0.3);
+  border-radius: 30%;
+}
+
+.menu--item__right {
+  display: flex;
   padding: 12px 50px;
   border-radius: 4px;
   background: transparent;
+  align-items: center;
 }
 
 .menu-item {
