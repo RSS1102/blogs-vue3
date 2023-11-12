@@ -54,6 +54,7 @@ const menuOnclick = (menuItem: MenuVertical) => {
  */
 const goHome = () => router.push('/')
 </script>
+
 <style lang="scss" scoped>
 .menu {
   font-family: 'Open xxk', serif;

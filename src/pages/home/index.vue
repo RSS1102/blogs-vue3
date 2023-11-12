@@ -53,9 +53,6 @@ import { MDivider, MBorder } from 'shuimo-ui'
 
 .center {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     @keyframes avatar-move {
         0% {
@@ -65,20 +62,6 @@ import { MDivider, MBorder } from 'shuimo-ui'
         100% {
             transform: rotate(3turn);
         }
-    }
-
-    .m-border {
-        width: 420px;
-        margin-bottom: 120px;
-        text-align: center;
-        box-shadow: 12px 12px 2px 1px rgba(113, 30, 30, 0.2);
-        user-select: none;
-    }
-
-    .m-border-text {
-        font-family: 'Open Yr-Xk', serif;
-        font-size: 42px;
-        padding: 20px;
     }
 
 }
@@ -98,7 +81,7 @@ import { MDivider, MBorder } from 'shuimo-ui'
     }
 
     .describe {
-        margin: 5px;
+        margin: 0 5px;
         font-weight: bold;
 
     }
@@ -110,7 +93,7 @@ import { MDivider, MBorder } from 'shuimo-ui'
 
     .contact-information img {
         width: 36px;
-        margin: 10px;
+        margin: 0 10px;
     }
 }
 </style>

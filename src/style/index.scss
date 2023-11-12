@@ -1,8 +1,14 @@
 @import url('../assets/fonts/index.scss');
+
 html,
 body {
     margin: 0;
     padding: 0;
+    height: 100vh;
+}
+
+#app {
+    height: 100%;
 }
 
 .dark {

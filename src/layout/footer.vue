@@ -11,7 +11,7 @@
 </script>
 <style lang="scss" scoped>
 .business {
-    padding: 28px;
+    padding: 26px;
     background-color: rgb(88, 88, 88);
     text-align: center;
 

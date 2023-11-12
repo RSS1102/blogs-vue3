@@ -1,11 +1,18 @@
 import { RouteRecordRaw, createRouter, createWebHistory } from "vue-router";
+import Preload from '@/pages/preload/index.vue'
 import { Menu } from "./menu";
+
+
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
-        redirect: '/index',
+        name: '/',
+        component: Preload
+    }, {
+        path: '/',
+        component: () => import('@/layout/index.vue'),
+        children: Menu
     },
-    ...Menu
 ]
 
 const router = createRouter({
