@@ -21,9 +21,7 @@
             </div>
             <MDivider vertical />
             <div class="center">
-                <MBorder>
-                    <div class="m-border-text">愿明天会比昨天更好！</div>
-                </MBorder>
+                <BlogCard />
             </div>
             <MDivider vertical />
             <div class="right">...</div>
@@ -33,7 +31,8 @@
 </template>
 <script setup lang="ts">
 import Footer from '@/layout/footer.vue'
-import { MDivider, MBorder } from 'shuimo-ui'
+import { MDivider } from 'shuimo-ui'
+import BlogCard from "@/components/BlogCard.vue";
 
 </script>
 <style lang="scss" scoped>
