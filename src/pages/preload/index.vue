@@ -41,6 +41,7 @@ const jumpLink = (link: string) => window.open(link)
 
   &__icon-list {
     display: flex;
+    justify-content: center;
     padding: 20px 0;
   }
 
@@ -62,7 +63,7 @@ const jumpLink = (link: string) => window.open(link)
       height: 200px;
       border-radius: 50%;
       background-color: rgba(200, 200, 200, 0.75);
-      animation: avatar-rotate 5s linear infinite;
+      animation: avatarRotateAnimation 3s cubic-bezier(0.1, 0.79, 0.74, 1) 1;
     }
   }
 }
@@ -71,7 +72,7 @@ const jumpLink = (link: string) => window.open(link)
   width: 100%;
   height: 100%;
   opacity: 0;
-  animation: fade-in 2s ease-in;
+  animation: fadeIn 2s ease-in;
   animation-fill-mode: forwards;
 }
 
@@ -79,10 +80,10 @@ const jumpLink = (link: string) => window.open(link)
   width: 420px;
   text-align: center;
   user-select: none;
-  animation: scale-down 3s ease-in;
+  animation: scaleDown 2.6s ease-in;
 }
 
-@keyframes fade-in {
+@keyframes fadeIn {
   0% {
     opacity: 0;
   }
@@ -93,7 +94,7 @@ const jumpLink = (link: string) => window.open(link)
 
 }
 
-@keyframes scale-down {
+@keyframes scaleDown {
   0% {
     scale: 1.2;
   }
@@ -104,25 +105,13 @@ const jumpLink = (link: string) => window.open(link)
 
 }
 
-@keyframes avatar-rotate {
+@keyframes avatarRotateAnimation {
   0% {
-    transform: rotate(0deg) scale(1);
-  }
-
-  25% {
-    transform: rotate(90deg) scale(1.1);
-  }
-
-  50% {
-    transform: rotate(180deg) scale(1);
-  }
-
-  75% {
-    transform: rotate(270deg) scale(0.9);
+    transform: rotate(0deg);
   }
 
   100% {
-    transform: rotate(360deg) scale(1);
+    transform: rotate(1080deg);
   }
 }
 </style>
