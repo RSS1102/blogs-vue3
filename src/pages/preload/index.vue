@@ -7,6 +7,8 @@
         <Icon icon="fa-solid:at" color="#ffc65c" tooltip="email" @click="jumpLink('mailto:jimmyrss1102@gmail.com')" />
         <Icon icon="fa6-brands:bilibili" color="#1769aa" tooltip="bilibili"
           @click="jumpLink('https://space.bilibili.com/278380640')" />
+        <Icon icon="ph:discord-logo-bold" color="#5865F2" tooltip="discord"
+          @click="jumpLink('https://discord.gg/RhNg85HUMk')" />
       </div>
       <MBorder>
         <div @click="goHome" class="preload__border-text">愿明天会比昨天更好！</div>
